@@ -1,0 +1,1 @@
+Trong thư mục này chỉ chứa các file logic Xử lý các thông tin từ DAL và GUI
