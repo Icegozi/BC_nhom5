@@ -8,7 +8,7 @@
         // Xử lý điều hướng dựa trên giá trị của biến $pg
         switch ($pg) {
             case 'contact':
-                include 'contact.php';
+                include 'giaodien_SuaThongTinCaNhan.php';
                 break;
             case 'about':
                 include 'about.php';
