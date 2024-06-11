@@ -13,4 +13,3 @@ function getConnection() {
         return null;
     }
 }
-?>

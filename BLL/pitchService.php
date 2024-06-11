@@ -19,4 +19,3 @@
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     return $row['count'] == 0;
     }
-?>

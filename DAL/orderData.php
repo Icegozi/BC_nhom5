@@ -1,7 +1,7 @@
 <?php
     function checkTimeOrder($pitch_id, $start_time, $end_time) {
         $conn = getConnection();
-        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM orders WHERE pitch_id = ? AND (start_at < ? AND end_at > ?)";);
+        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM orders WHERE pitch_id = ? AND (start_at < ? AND end_at > ?)");
         $stmt->bind_param('iss', $pitch_id, $start_time, $end_time);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -39,4 +39,3 @@
             return false;
         }
     }
-?>
