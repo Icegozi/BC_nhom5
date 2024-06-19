@@ -8,11 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sửa thông tin cá nhân</title>
-    <link rel="stylesheet" href="css/userEdit.css">
+    <link rel="stylesheet" href="css/userEdit.css?v= <?php echo time()?>">
 </head>
 
 <body>
-    <h1>Edit profile</h1>
+    <h2>EDIT PROFILE</h2>
     <div class="container">
         <div class="col-md-6">
             <form action="" method="post">
@@ -24,8 +24,7 @@
                 <div class="form-group">
                     <div class="">
                         <label for="matKhau">Password:</label><br>
-                        <input disabled type="password" class="form-control" id="matKhau" name="matKhau"
-                            value="123456789">
+                        <input type="password" class="form-control" id="matKhau" name="matKhau" value="123456789">
                     </div>
 
                 </div>
