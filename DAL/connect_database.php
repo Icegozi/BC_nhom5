@@ -1,7 +1,7 @@
 <?php
 function getConnection() {
     $host = "localhost:8111";
-    $db_name = "qlsb";
+    $db_name = "qlsss";
     $username = "root";
     $password = "";
 

@@ -6,6 +6,9 @@
     <title>Chi tiết sân bóng</title>
 </head>
 <body>
+    <div class="avt_pitch">
+        
+    </div>
     <?php
         
     ?>
