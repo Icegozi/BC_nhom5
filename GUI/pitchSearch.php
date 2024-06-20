@@ -1,7 +1,16 @@
 <?php
+session_start(); // Bắt đầu session
 require_once __DIR__ . '/../BLL/pitchSearchService.php';
 $service = new PitchSearchService();
 $emptyPitches = $service->getEmptyPitch();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Khi button "Book Now" được nhấn, lưu thông tin sân bóng vào session
+    $pitchId = $_POST['pitchId'];
+    $_SESSION['selectedPitch'] = $service->getPitchById($pitchId);
+    header('Location: #');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +39,10 @@ $emptyPitches = $service->getEmptyPitch();
                 <p class="title_name">Price per peak hour:</p>
                 <p><?php echo $pitchId->price_per_peak_hour . " VND"; ?></p>
                 <div class="button-container">
-                    <button>Book Now</button>
+                    <form method="post">
+                        <input type="hidden" name="pitchId" value="<?php echo $pitchId->id ?>">
+                        <button type="submit">Book Now</button>
+                    </form>
                 </div>
             </div>
         </div>
