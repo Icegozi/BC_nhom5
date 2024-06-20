@@ -1,0 +1,74 @@
+ body {
+     margin: 0;
+     padding: 0;
+ }
+
+ .container {
+     display: flex;
+     justify-content: center;
+     /* Căn giữa theo chiều ngang */
+     align-items: center;
+     /* Căn giữa theo chiều dọc */
+     height: 100vh;
+     /* Chiều cao của container, có thể điều chỉnh */
+     background-color: #f0f0f0;
+     /* Màu nền cho container để dễ thấy */
+ }
+
+
+ h1 {
+     text-align: center;
+     margin-bottom: 20px;
+ }
+
+ .form-group {
+     margin-bottom: 15px;
+ }
+
+ .form-control {
+     padding: 5px 20px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 20px;
+ }
+
+ .form-control[readonly] {
+     background-color: #e9ecef;
+     opacity: 1;
+ }
+
+ .btn {
+     background-color: #007bff;
+     color: white;
+     padding: 12px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     width: 100px;
+ }
+
+ .title {
+     margin-left: 28%;
+ }
+
+ #content {
+     width: 100%;
+     height: 31%;
+     background-color: none;
+     border: none;
+     text-align: center;
+     color: black;
+     font-family: "Shadows Into Light", cursive;
+     font-weight: 500;
+     font-style: normal;
+     font-size: 24px;
+ }
+
+ .col-md-6 label {
+     font-weight: bold;
+     font-size: larger;
+ }
+
+ .password-wrapper .form-control {
+     padding-right: 150px;
+ }

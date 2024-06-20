@@ -1,1 +1,0 @@
-thư mục chứa các file php kết nối trực tiếp với cơ sở dữ liệu, và xử lý với cơ sở dữ liệu như select, insert, update, delete.

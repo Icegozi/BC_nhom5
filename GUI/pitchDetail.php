@@ -38,11 +38,13 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin - <?php echo $name;?></title>
     <style>
+<<<<<<< HEAD
         body { font-family: Arial, sans-serif; padding: 0 10vh 0px 10vh;}
         .container { display: flex; }
         .left-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60%; padding-right: 150px; }
@@ -153,8 +155,134 @@
         }
         
         
+=======
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .left-panel {
+        width: 50%;
+    }
+
+    .right-panel {
+        width: 50%;
+    }
+
+    .field-info {
+        margin-bottom: 20px;
+    }
+
+    .field-info label {
+        font-weight: bold;
+    }
+
+    .field-info span {
+        margin-left: 10px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .image-button {
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin: 10px;
+    }
+
+    .description {
+        margin-top: 20px;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+    }
+
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        background: #f0f0f0;
+        padding: 20px;
+        width: 700px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .field-image img {
+        width: 80%;
+        height: auto;
+        margin-right: 20px;
+        position: relative;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin: 10px 0 5px;
+        font-weight: bold;
+    }
+
+    input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    tr {
+        width: 80%;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    td:first-child {
+        width: 60%;
+    }
+
+    button,
+    input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: black;
+        background-color: #4CAF50;
+    }
+>>>>>>> 9a12902fc5bf40b04c3f6b7269b59ce429f226a3
     </style>
 </head>
+
 <body>
     <div><h1 style="color:#19458a"><?php echo $name;?></h1>
         <?php if ($status == 'Đang hoạt động')  echo '<h3 style="color: green; ">Đang hoạt động</h3>';
@@ -165,6 +293,7 @@
             <div class="field-image">
                 <img id="field-image" src=<?php echo $avt_pitches[0];?> alt="Sân bóng">
             </div>
+<<<<<<< HEAD
             <div class="thumbnails-container">
         <div class="thumbnails" id="thumbnails">
             <?php foreach ($avt_pitches as $index => $imageSrc): ?>
@@ -177,6 +306,16 @@
         <button onclick="scrollThumbnails(-150)">Previous</button>
         <button onclick="scrollThumbnails(150)">Next</button>
     </div>
+=======
+            <div class="settings">
+                <?php
+                    $length = count($avt_pitches);
+                    for ($i=0; $i<$length; $i++) {
+                        echo '<button class="image-button" onclick="changeImage(' . $avt_pitches[$i] . ')"></button>';
+                    }
+                ?>
+            </div>
+>>>>>>> 9a12902fc5bf40b04c3f6b7269b59ce429f226a3
         </div>
         <div class='right-panel'>
             <h1>Thông tin</h1>
@@ -218,8 +357,7 @@
                     <h1>Đặt sân</h1>
                     <p style="margin-bottom: 20px;">Đặt sân bóng đá tại đây!</p>
                     <form action="" method="post">
-                    <table>
-                        
+                        <table>
                             <tr>
                                 <td><label for="date">Chọn ngày</label></td>
                                 <td><input type="date" name="date" value=<?php echo $date_now?>></td>
@@ -244,19 +382,20 @@
                                 <td><label for="email">Email</label></td>
                                 <td><input type="email" name="email"></td>
                             </tr>
-                    </table>
-                    <div>
-                        <input type="submit" value="Đặt sân">
-                        <button type="button" class="close-btn" onclick="closePopup()">Đóng</button>
-                    </div>
+                        </table>
+                        <div>
+                            <input type="submit" value="Đặt sân">
+                            <button type="button" class="close-btn" onclick="closePopup()">Đóng</button>
+                        </div>
                     </form>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
     </div>
     <script>
+<<<<<<< HEAD
         let images = <?php echo json_encode($avt_pitches); ?>;
         let currentIndex = 0;
         let thumbnailContainer = document.getElementById('thumbnails');
@@ -309,6 +448,20 @@
         function closePopup() {
             document.getElementById('popup-overlay').style.display = 'none';
         }
+=======
+    function changeImage(imageSrc) {
+        document.getElementById('field-image').src = imageSrc;
+    }
+
+    function openPopup() {
+        document.getElementById('popup-overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup-overlay').style.display = 'none';
+    }
+>>>>>>> 9a12902fc5bf40b04c3f6b7269b59ce429f226a3
     </script>
 </body>
+
 </html>

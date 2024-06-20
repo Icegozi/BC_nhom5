@@ -13,6 +13,3 @@
         $conn->close();
         return $pitch;
     }
-
-    
-?>
