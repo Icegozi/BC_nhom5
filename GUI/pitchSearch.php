@@ -1,5 +1,7 @@
 <?php
-session_start(); // Bắt đầu session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Bắt đầu session nếu chưa tồn tại
+}
 require_once __DIR__ . '/../BLL/pitchSearchService.php';
 $service = new PitchSearchService();
 $emptyPitches = $service->getEmptyPitch();
