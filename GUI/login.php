@@ -15,7 +15,7 @@
                 alt="hình ảnh">
             <div class="ui_login">
                 <p class="heading">Log in</p>
-                <input type="text" name="username" placeholder="Username" class="form-group" required>
+                <input type="email" name="email" placeholder="Email" class="form-group" required>
                 <input type="password" name="password" placeholder="Password" class="form-group" required>
                 <input type="submit" value="Log in" class="btn" name="login">
                 <p class="signup-link">Don't have an account? <a href="signin.php">Sign up</a></p>

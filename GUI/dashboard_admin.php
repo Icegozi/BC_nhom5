@@ -11,6 +11,8 @@ if(isset($_GET['pg'])){
             include 'pitchManage.php';
             break;
         case 'logout': 
+            session_start();
+            session_destroy();
             header("Location: login.php");
             exit();
         default:

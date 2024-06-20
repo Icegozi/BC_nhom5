@@ -1,24 +1,10 @@
 <?php
-include 'header.php';
-if(isset($_GET['pg'])){
-    $pg = $_GET['pg'];
+session_start();
 
-    switch($pg){
-        case 'order':
-            include 'order.php';
-            break;
-        case 'userEdit':
-            include 'userEdit.php';
-            break;
-        case 'pitchSearch':
-            include 'pitchSearch.php';
-            break;
-        default:
-            include 'home.php';
-            break;
-        }
-    }else{
-        include 'home.php';
-    }  
-
-include 'footer.php';
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+} else {
+    header("Location: dashboard.php");
+    exit();
+}
