@@ -1,7 +1,7 @@
 <?php
 function getConnection() {
-    $host = "localhost:8111";
-    $db_name = "qlsb";
+    $host = "localhost";
+    $db_name = "quan_ly_san_bong";
     $username = "root";
     $password = "";
 
