@@ -15,10 +15,13 @@ if(isset($_GET['pg'])){
 
     switch($pg){
         case 'userEdit':
-            include 'userEdit.php';
+            include 'editAdmin.php';
             break;
         case 'pitchManage':
             include 'pitchManage.php';
+            break;
+        case 'accountManage':
+            include 'accountManage.php';
             break;
         case 'logout': 
             session_start();

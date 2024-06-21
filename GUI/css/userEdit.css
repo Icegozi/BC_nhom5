@@ -2,35 +2,32 @@
      margin: 0px;
      padding: 0px;
      font-family: Arial, sans-serif;
-
+     background-image: url("../img/pitch3.jpg");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
  }
 
  .container {
      display: flex;
      justify-content: center;
      align-items: center;
-     height: 60vh;
-     background-color: #669966;
+     height: 80vh;
+
  }
 
  .col-md-6 {
      max-width: 600px;
-     /* Giới hạn chiều rộng tối đa của cột */
      margin: 0 auto;
-     /* Căn giữa cột */
      padding: 20px;
-     /* Khoảng cách giữa các cột */
      background-color: #fff;
-     /* Màu nền cho cột */
      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-     /* Đổ bóng cho cột */
      border-radius: 8px;
-     /* Bo tròn góc cho cột */
  }
 
  h2 {
      text-align: center;
-
+     color: whitesmoke;
  }
 
  .form-group {

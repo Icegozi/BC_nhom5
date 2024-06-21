@@ -5,9 +5,9 @@ require_once __DIR__ . '/../BLL/UserService.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-
     $userService = new UserService();
-    $user = $userService->login($email, $password);
+    $hashedPassword = md5($password);
+    $user = $userService->login($email, $hashedPassword);
 
     if ($user) {
         $_SESSION['user_id'] = $user['id'];
@@ -23,3 +23,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         echo '<script type="text/javascript">alert("Invalid email or password."); location.replace("login.php");</script>';
     }
 }
+    

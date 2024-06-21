@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <link rel="stylesheet" href="css/signin.css">
+    <link rel="stylesheet" href="css/signin.css?v = <?php echo time(); ?>">
 </head>
 
 <body>
@@ -21,10 +21,6 @@
             <div class="form-controler">
                 <label for="lastname">Lastname</label><br>
                 <input type="text" name="lastname" id="lastname" placeholder="e.g: Nguyễn Văn" required>
-            </div>
-            <div class="form-controler">
-                <label for="username">Username</label><br>
-                <input type="text" name="username" id="username" placeholder="e.g: abc@123" required>
             </div>
             <div class="form-controler">
                 <label for="password">Password</label><br>

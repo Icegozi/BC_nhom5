@@ -16,8 +16,8 @@
         <div class="wrapper">
             <ul class="menu">
                 <li><a href="dashboard_admin.php?pg=Home">Home</a></li>
-                <li><a href="dashboard_admin.php?pg=userEdit">Edit Profile</a></li>
                 <li><a href="dashboard_admin.php?pg=pitchManage">Pitch Manager</a></li>
+                <li><a href="dashboard_admin.php?pg=accountManage">Account Management</a></li>
                 <li><a href="dashboard_admin.php?pg=logout">Log out</a></li>
             </ul>
         </div>

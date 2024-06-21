@@ -24,4 +24,69 @@ class UserRepository {
         $stmt->close();
         return $user;
     }
+
+    public function findUserById($id) {
+        $sql = "SELECT * FROM users WHERE id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        $stmt->close();
+        return $user;
+    }
+
+    public function updateUser($id, $name, $password, $phone, $email, $address) {
+        $sql = "UPDATE users SET name=?, password=?, phone=?, email=?, address=? WHERE id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sssssi", $name, $password, $phone, $email, $address, $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
+
+    public function findAllUsers() {
+    $sql = "SELECT * FROM users";
+    $result = $this->conn->query($sql);
+    $users = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+    }
+    return $users;
+}
+
+public function deleteUser($id) {
+    $sql = "DELETE FROM users WHERE id=?";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $result = $stmt->execute();
+    $stmt->close();
+    return $result;
+}
+
+public function findNameTypebyId($id){
+    $sql = "SELECT name FROM user_types WHERE id = $id" ;
+    $typeName = $this->conn->query($sql);
+    if($typeName->num_rows>0){
+        $result = $typeName->fetch_assoc();
+        return $result['name'];
+    }
+    return null;
+}
+
+ public function addUser($name, $email, $phone, $address, $type) {
+        try {
+            $query = "INSERT INTO users (name, email, phone, address, type) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bind_param("sssss", $name, $email, $phone, $address, $type);
+            $stmt->execute();
+            $stmt->close();
+            return true;
+        } catch (Exception $e) {
+            error_log("Error adding user: " . $e->getMessage());
+            return false; 
+        }
+ }
 }
