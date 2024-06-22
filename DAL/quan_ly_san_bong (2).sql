@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost:8111
--- Thời gian đã tạo: Th6 13, 2024 lúc 04:21 PM
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th6 22, 2024 lúc 05:13 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,10 +57,8 @@ CREATE TABLE `discounts` (
   `usage_limit` int(11) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `update_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-ALTER TABLE `discounts`
-ADD CONSTRAINT `check_usage_limit` CHECK (`usage_limit` > 0),
-ADD CONSTRAINT `check_amount` CHECK (`amount` > 0);
+) ;
+
 --
 -- Đang đổ dữ liệu cho bảng `discounts`
 --
@@ -86,9 +84,8 @@ CREATE TABLE `football_pitches` (
   `pitch_type_id` bigint(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-ALTER TABLE `football_pitches`
-ADD CONSTRAINT `check_time` CHECK (`time_start` < `time_end`);
+) ;
+
 --
 -- Đang đổ dữ liệu cho bảng `football_pitches`
 --
@@ -96,7 +93,9 @@ ADD CONSTRAINT `check_time` CHECK (`time_start` < `time_end`);
 INSERT INTO `football_pitches` (`id`, `name`, `time_start`, `time_end`, `description`, `price_per_hour`, `price_per_peak_hour`, `is_maintenance`, `pitch_type_id`, `created_at`, `updated_at`) VALUES
 (1, 'Sân bóng Lai Xá', '06:00:00', '23:59:59', 'Sân đông to đạt tiêu chuẩn, vui tấp nập đủ mọi tiện nghi cho một trận đấu lý thú!\r\nNằm ở Thôn Lai Xá, Hoài Đức, Hà Nội, Việt Nam\r\nSố điện thoại sân: 0913811987\r\n', 500000, 1000000, 0, 3, '2024-06-13 13:52:26', NULL),
 (2, 'Sân bóng Thành Đô', '07:00:00', '22:30:00', 'View đẹp.\r\nĐức Giang, Hoài Đức, Hà Nội, Việt Nam', 500000, 700000, 0, 2, '2024-06-13 14:04:47', NULL),
-(3, 'Sân Bóng Đá Minh Khai', '06:00:00', '22:00:00', 'Ngõ 136 đường Cầu Diễn Minh Khai Quận, Bắc Từ Liêm, Hà Nội, Việt Nam', 400000, 700000, 0, 3, '2024-06-13 14:13:27', NULL);
+(3, 'Sân Bóng Minh Khai', '06:00:00', '22:00:00', 'Ngõ 136 đường Cầu Diễn Minh Khai Quận, Bắc Từ Liêm, Hà Nội, Việt Nam', 400000, 700000, 0, 3, '2024-06-13 14:13:27', '2024-06-19 15:41:05'),
+(4, 'Sân bóng Nguyên Xá', '07:00:00', '20:00:00', 'Sân bóng mới xây dựng, có cỏ nhân tạo thích hợp để đá bóng chuyên nghiệp\r\n', 300000, 600000, 2, 3, '2024-06-19 16:00:36', NULL),
+(5, 'Sân bóng Mai Dịch', '07:00:00', '20:00:00', 'Sân được lựa chọn cho nhiều cầu thủ nổi tiếng luyện tập.\r\n', 500000, 800000, 2, 4, '2024-06-20 16:00:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -167,6 +166,14 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `phone`, `email`, `deposit`, `code`, `start_at`, `end_at`, `total`, `status`, `note`, `user_id`, `football_pitch_id`, `created_at`, `updated_at`) VALUES
+(1, 'Hà Xuân Phúc\r\n', '0965423986', 'haxuanphuc56@gmail.com', 300000, 'Nhom5_Php', '2024-06-19 08:00:00', '2024-06-19 11:00:00', 500000, 1, 'Đặt thêm thùng nước ngọt\r\n', 2, 2, '2024-06-19 16:09:33', NULL),
+(2, 'Nguyễn Văn Quyết\r\n', '0965469875', 'NguyenVanQuyet56@gmail.com', 400000, 'Nhom5_Php', '2024-06-19 08:00:00', '2024-06-19 11:00:00', 500000, 1, 'Đặt thêm thùng nước ngọt\r\n', 1, 4, '2024-06-19 16:09:37', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -200,9 +207,8 @@ CREATE TABLE `pitch_types` (
   `description` varchar(250) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-ALTER TABLE `pitch_types`
-ADD CONSTRAINT `check_quantity` CHECK (`quantity` > 0);
+) ;
+
 --
 -- Đang đổ dữ liệu cho bảng `pitch_types`
 --
@@ -238,8 +244,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `address`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Đức Minh Hoàng', NULL, 'dmh@gmail.com', 'admin1', NULL, 1, NULL, '2024-06-13 14:19:09', NULL),
-(2, 'Đức Minh Hoàng', NULL, 'duch5191@gmail.com', 'hoangtest', NULL, 2, NULL, '2024-06-13 14:20:19', NULL);
+(1, 'Đức Minh Hoàng', '0964203955', 'dmh@gmail.com', '8ddcff3a80f4189ca1c9d4d902c3c909', 'Hải Phòng', 1, NULL, '2024-06-13 14:19:09', '2024-06-21 15:40:09'),
+(2, 'Hà Xuân Phúc', '0964203698', 'sinhvien2k3@gmail.com', '8ddcff3a80f4189ca1c9d4d902c3c909', 'Ngõ 1, đường Hoàng Hoa thám, Hà Nội', 2, NULL, '2024-06-13 14:20:19', '2024-06-21 15:17:18'),
+(3, 'Lam Tiểu Bố', '0965469875', 'lamca@gmail.com', '8ddcff3a80f4189ca1c9d4d902c3c909', 'Quảng Ninh', 1, NULL, '2024-06-21 16:40:32', NULL),
+(5, 'Lăng Lạc Thần', '0986523687', 'thantientyty@gmail.com', '8ddcff3a80f4189ca1c9d4d902c3c909', 'Tuyên Quang', 1, NULL, '2024-06-21 16:49:16', NULL),
+(6, 'Chú Thỏ Con', '0896523678', 'thocon@gmail.com', '8ddcff3a80f4189ca1c9d4d902c3c909', 'TP HCM', 1, NULL, '2024-06-21 16:49:16', '2024-06-21 17:55:12'),
+(7, 'Hỏa Linh Nhi', '0964528975', 'linhnhi@gmail.com', NULL, 'Yên Bái', 2, NULL, '2024-06-21 19:34:41', NULL),
+(9, 'Icegozi', '0965236978', 'icegozi@gmail.com', NULL, 'Nghệ An', 1, NULL, '2024-06-21 19:37:53', NULL),
+(10, 'Mã Hồng Tuấn', '0968756932', 'tuaandeptrai@gmail.com', NULL, 'Quảng Ninh', 2, NULL, '2024-06-21 20:05:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -348,7 +360,7 @@ ALTER TABLE `bank_information`
 -- AUTO_INCREMENT cho bảng `football_pitches`
 --
 ALTER TABLE `football_pitches`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `football_pitch_details`
@@ -366,7 +378,7 @@ ALTER TABLE `identity_papers`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `peak_hours`
@@ -378,13 +390,13 @@ ALTER TABLE `peak_hours`
 -- AUTO_INCREMENT cho bảng `pitch_types`
 --
 ALTER TABLE `pitch_types`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `user_types`
