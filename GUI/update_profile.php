@@ -19,14 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($password)) {
         if ($password !== $confirmPassword) {
-            echo '<script type="text/javascript">alert("Passwords do not match."); location.replace("userEdit.php");</script>';
+            echo '<script type="text/javascript">alert("Passwords do not match."); location.replace("dashboard.php");</script>';
             exit();
         }
         $hashedPassword = md5($password);
     }
 
+    if (strlen($password) < 8) {
+        echo '<script type="text/javascript">alert("Password must have at least 8 characters."); location.replace("dashboard.php");</script>';
+        exit();
+    }
     if (!preg_match('/^[0-9]{10}$/', $phone)) {
-        echo '<script type="text/javascript">alert("Phone number must be 10 digits."); location.replace("dashboard_admin.php");</script>';
+        echo '<script type="text/javascript">alert("Phone number must be 10 digits."); location.replace("dashboard.php");</script>';
         exit();
     }
     
