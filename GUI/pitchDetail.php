@@ -103,7 +103,10 @@
     <title>Thông tin - <?php echo $name;?></title>
     <style>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
         body { font-family: Arial, sans-serif; padding: 0 10vh 0px 10vh;}
         .container { display: flex; }
         .left-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60%; padding-right: 150px; }
@@ -213,7 +216,10 @@
             opacity: 0.9;
         }
         
+<<<<<<< HEAD
 >>>>>>> ef44068 (update: order, bill)
+=======
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
     body {
         font-family: Arial, sans-serif;
         padding: 0 10vh 0px 10vh;
@@ -301,6 +307,7 @@
         cursor: pointer;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     .field-image {
         display: flex;
@@ -392,6 +399,8 @@
 
 =======
 >>>>>>> ef44068 (update: order, bill)
+=======
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
     form {
         display: flex;
         flex-direction: column;
@@ -453,8 +462,12 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div>
         <h1 style="color:#19458a"><?php echo $name;?></h1>
+=======
+    <div><h1 style="color:#19458a"><?php echo $name;?></h1>
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
         <?php if ($status == 'Đang hoạt động')  echo '<h3 style="color: green; ">Đang hoạt động</h3>';
         else echo '<h3 style="color: red">Đang bảo trì</h3>'?>
     </div>
@@ -462,6 +475,7 @@
         <div class='left-panel'>
             <div class="field-image">
                 <img id="field-image" src=<?php echo $avt_pitches[0];?> alt="Sân bóng">
+<<<<<<< HEAD
             </div>
             <div class="thumbnails-container">
 <<<<<<< HEAD
@@ -478,6 +492,10 @@
                 <button onclick="scrollThumbnails(150)">Next</button>
             </div>
 =======
+=======
+            </div>
+            <div class="thumbnails-container">
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
         <div class="thumbnails" id="thumbnails">
             <?php foreach ($avt_pitches as $index => $imageSrc): ?>
                 <img src="<?php echo $imageSrc; ?>" alt="Thumbnail <?php echo $index + 1; ?>" onclick="changeImage('<?php echo $imageSrc; ?>')">
@@ -489,7 +507,10 @@
         <button onclick="scrollThumbnails(-150)">Previous</button>
         <button onclick="scrollThumbnails(150)">Next</button>
     </div>
+<<<<<<< HEAD
 >>>>>>> ef44068 (update: order, bill)
+=======
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
         </div>
         <div class='right-panel'>
             <h1>Thông tin</h1>
@@ -520,8 +541,12 @@
             <div class="field-info">
                 <label>Sân liên kết</label>
             </div>
+<<<<<<< HEAD
             <button class="button" style="background-color:#f7373a; color:yellow;" onclick="openPopup()">Đặt
                 ngay</button>
+=======
+            <button class="button" style="background-color:#f7373a; color:yellow;" onclick="openPopup()">Đặt ngay</button>
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
             <button class="button">Xem thời gian sân đã đặt</button>
             <div class="field-info description">
                 <label>Mô tả</label>
@@ -575,6 +600,7 @@
         </div>
     </div>
     <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
     let images = <?php echo json_encode($avt_pitches); ?>;
     let currentIndex = 0;
@@ -646,6 +672,23 @@
             console.log(imageSrc);
         }
 
+=======
+        let images = <?php echo json_encode($avt_pitches); ?>;
+        let currentIndex = 0;
+        let thumbnailContainer = document.getElementById('thumbnails');
+        let scrollButtons = document.getElementById('scroll-buttons');
+
+        function changeImage(imageSrc) {
+            let img = document.getElementById('field-image');
+            img.classList.add('hidden');
+            setTimeout(() => {
+                img.src = imageSrc;
+                img.classList.remove('hidden');
+            }, 1000); // Thời gian khớp với thời gian của transition trong CSS
+            console.log(imageSrc);
+        }
+
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
         function autoChangeImage() {
             if (images.length > 1) { // Chỉ thay đổi hình ảnh nếu có hơn 1 hình ảnh
                 currentIndex++;
@@ -683,7 +726,10 @@
         function closePopup() {
             document.getElementById('popup-overlay').style.display = 'none';
         }
+<<<<<<< HEAD
 >>>>>>> ef44068 (update: order, bill)
+=======
+>>>>>>> ef44068b0fc43e5286ad64d346598a5faf61afbf
     </script>
 </body>
 
