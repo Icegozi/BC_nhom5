@@ -1,6 +1,6 @@
 <?php
-    require_once './DAL/connect_database.php';
-    require_once './DAL/piches.php';
+    require_once '../DAL/pichesData.php';
+    require_once '../DAL/pitchDetailsData.php';
 
     function get_footballPichesDetails($id) {
         $conn = getConnection();
@@ -12,8 +12,10 @@
         return null;
     }
 
-    function checkTimeOrder($conn, $pitch_id, $date, $start_time, $end_time) {
-    $query = "SELECT COUNT(*) as count FROM ORDERS WHERE pitch_id = ? AND date = ? AND (start_time < ? AND end_time > ?)";
+    
+
+function checkTimeOrder($conn, $pitch_id, $date, $start_time, $end_time) {
+$query = "SELECT COUNT(*) as count FROM ORDERS WHERE pitch_id = ? AND date = ? AND (start_time < ? AND end_time> ?)";
     $stmt = $conn->prepare($query);
     $stmt->execute([$pitch_id, $date, $end_time, $start_time]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
