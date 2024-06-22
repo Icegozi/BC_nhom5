@@ -76,17 +76,29 @@ public function findNameTypebyId($id){
     return null;
 }
 
- public function addUser($name, $email, $phone, $address, $type) {
-        try {
-            $query = "INSERT INTO users (name, email, phone, address, type) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bind_param("sssss", $name, $email, $phone, $address, $type);
-            $stmt->execute();
-            $stmt->close();
-            return true;
-        } catch (Exception $e) {
-            error_log("Error adding user: " . $e->getMessage());
-            return false; 
-        }
- }
+ public function addUser($name, $email, $password, $phone, $address, $type) {
+    try {
+        $query = "INSERT INTO users (name, email, password, phone, address, type) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ssssss", $name, $email, $password, $phone, $address, $type);
+        $stmt->execute();
+        $stmt->close();
+        return true;
+    } catch (Exception $e) {
+        error_log("Error adding user: " . $e->getMessage());
+        return false; 
+    }
+}
+
+
+    public function isEmailExist($email) {
+        $query = "SELECT COUNT(*) as count FROM users WHERE email = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("s", $email); // Sử dụng bind_param để tránh lỗi
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+        return $row['count'] > 0;
+    }
 }

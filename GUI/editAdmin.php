@@ -35,7 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashedPassword = $user['password'];
     }
 
-    // Kiểm tra số điện thoại
+    if($userService->isEmailExist($email)){
+        echo '<script type="text/javascript">alert("Email already exists in the system."); location.replace("editAdmin.php?action=edit&id=' . $userId . '");</script>';
+        exit();
+    }
+    
     if (!preg_match('/^[0-9]{10}$/', $phone)) {
         echo '<script>alert("Phone number must be 10 digits."); location.replace("editAdmin.php?action=edit&id=' . $userId . '");</script>';
         exit();
@@ -59,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+    <title>Edit admin</title>
     <link rel="stylesheet" href="css/userEdit.css?v=<?php echo time(); ?>">
 </head>
 

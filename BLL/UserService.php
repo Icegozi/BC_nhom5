@@ -35,8 +35,13 @@ class UserService {
         return $this->userRepository->findNameTypebyId($id);
     }
 
-      public function addUser($name, $email, $phone, $address, $type) {
+    public function addUser($name, $email, $password, $phone, $address, $type) {
         // Gọi phương thức addUser từ UserDAO để thêm người dùng vào cơ sở dữ liệu
-        return $this->userRepository->addUser($name, $email, $phone, $address, $type);
+        return $this->userRepository->addUser($name, $email, $password, $phone, $address, $type);
     }
+
+    public function isEmailExist($email){
+        return $this->userRepository->isEmailExist($email);
+    }
+    
 }
