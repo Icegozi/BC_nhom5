@@ -1,15 +1,20 @@
 <?php
     require_once '../BLL/pitchService.php';
     require_once '../BLL/orderService.php';
-    //$pitch_id = $_SESSION['id'];
-    //$user_id = $_SESSION['user_id'];
+
+
+    if (isset($_COOKIE['user_id'])) {
+        $user_id = $_COOKIE['user_id'];
+    }
+    else $user_id = 1;
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         if (isset($_GET['football_id']))
         $pitch_id = $_GET['football_id'];
         else $pitch_id = 1;
+
     }
     else $pitch_id = 1;
-    $user_id = 1;
+
     $pitch_details = getPitch($pitch_id);
     if ($pitch_details != null) {
         $name = $pitch_details['name'];
@@ -36,6 +41,59 @@
     }
     
 ?>
+<?php
+    require_once '../BLL/utils.php';
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['submit'])) {
+            $date = $_POST['date'];
+            $strat_time = $_POST['start_time'];
+            $end_time = $_POST['end_time'];
+            $namee = htmlspecialchars($_POST['name']);
+            $namee = formatStandard($namee);
+            $sdt = htmlspecialchars($_POST['phone']);
+            $email = null;
+            $code = null;
+            if (!$namee) {    
+                echo "<script>alert('Tên không được chứa ký tự đặc biệt');</script>";
+                exit;   
+            }
+
+            if (isset($_POST['email'])) {
+                $email = htmlspecialchars($_POST['email']);
+            }
+            if (isset($_POST['code'])) {
+                $code = htmlspecialchars($_POST['code']);
+            }
+            try {
+                $re = createNewOrder($pitch_id, $user_id, $date, $strat_time, $end_time, $namee, $sdt, $email, $price_perhour, $price_perpeak, $code);
+                if ($re) {
+                    session_start();
+                    $_SESSION["order_id"] = $re;
+                    $_SESSION["pitch_id"] = $pitch_id;
+                    $_SESSION["name_pitch"] = $name;
+                    $_SESSION["quantity_pitch"] = $volume;
+                    $_SESSION["name_user"] = $namee;
+                    $_SESSION["phone"] = $sdt;
+                    $_SESSION["email"] = $email;
+                    $_SESSION["start_time"] = formatDateTime($date, $strat_time);
+                    $_SESSION["end_time"] = formatDateTime($date, $end_time);
+                    header("Location: ./order.php");
+                    exit();
+                }
+                    
+                else {
+                    echo "<script>alert('Đặt không thành công');</script>";
+                }
+            }
+            catch (Exception $e){
+                echo "<script>alert('Message: '" .$e->getMessage(). "');</script>";
+            }
+        }
+        else {
+            echo "<script>alert('Đặt không thành công');</script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +102,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin - <?php echo $name;?></title>
     <style>
-<<<<<<< HEAD
         body { font-family: Arial, sans-serif; padding: 0 10vh 0px 10vh;}
         .container { display: flex; }
         .left-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60%; padding-right: 150px; }
@@ -59,9 +116,9 @@
         .popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 20px; background: #f0f0f0; padding: 20px; width: 700px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
         .close-btn { position: absolute; top: 10px; right: 10px; cursor: pointer; }
         .field-image { display: flex; justify-content: center; align-items: center; border-radius: 20px; }
-        .field-image img { width: 100%; height: auto; max-width: 100%; max-height: 400px; border-radius: 20px; object-fit: cover; }
-        .field-image { position: relative; width: 100%; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        .field-image img { width: 100%; height: 100%;  transition: opacity 1s ease-in-out; opacity: 1; }
+        .field-image img { width: auto; max-width: 100%; max-height: 400px; border-radius: 20px; object-fit: cover; }
+        .field-image { position: relative; width: 100%; height: 400px; overflow: hidden;  }
+        .field-image img { width: 100%; height: auto;  transition: opacity 1s ease-in-out; opacity: 1; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); }
         .field-image img.hidden { opacity: 0; }
         .thumbnails-container {
             display: flex;
@@ -154,8 +211,6 @@
             opacity: 0.9;
         }
         
-        
-=======
     body {
         font-family: Arial, sans-serif;
     }
@@ -236,13 +291,6 @@
         cursor: pointer;
     }
 
-    .field-image img {
-        width: 80%;
-        height: auto;
-        margin-right: 20px;
-        position: relative;
-    }
-
     form {
         display: flex;
         flex-direction: column;
@@ -279,21 +327,19 @@
         color: black;
         background-color: #4CAF50;
     }
->>>>>>> 9a12902fc5bf40b04c3f6b7269b59ce429f226a3
     </style>
 </head>
 
 <body>
     <div><h1 style="color:#19458a"><?php echo $name;?></h1>
         <?php if ($status == 'Đang hoạt động')  echo '<h3 style="color: green; ">Đang hoạt động</h3>';
-        else echo '<h3 style="color: red">Đang hoạt động</h3>'?>
+        else echo '<h3 style="color: red">Đang bảo trì</h3>'?>
     </div>
     <div class='container'>
         <div class='left-panel'>
             <div class="field-image">
                 <img id="field-image" src=<?php echo $avt_pitches[0];?> alt="Sân bóng">
             </div>
-<<<<<<< HEAD
             <div class="thumbnails-container">
         <div class="thumbnails" id="thumbnails">
             <?php foreach ($avt_pitches as $index => $imageSrc): ?>
@@ -306,16 +352,6 @@
         <button onclick="scrollThumbnails(-150)">Previous</button>
         <button onclick="scrollThumbnails(150)">Next</button>
     </div>
-=======
-            <div class="settings">
-                <?php
-                    $length = count($avt_pitches);
-                    for ($i=0; $i<$length; $i++) {
-                        echo '<button class="image-button" onclick="changeImage(' . $avt_pitches[$i] . ')"></button>';
-                    }
-                ?>
-            </div>
->>>>>>> 9a12902fc5bf40b04c3f6b7269b59ce429f226a3
         </div>
         <div class='right-panel'>
             <h1>Thông tin</h1>
@@ -364,15 +400,22 @@
                             </tr>
                             <tr>
                                 <td><label for="start_time">Chọn giờ bắt đầu</label></td>
-                                <td><input type="time" name="start_time" value="07:00"></td>
+                                <td><input type="time" name="start_time" value="07:00" step="3600"></td>
                             </tr>
                             <tr>
                                 <td><label for="end_time">Chọn giờ kết thúc</label></td>
-                                <td><input type="time" name="end_time" value="07:00"></td>
+                                <td><input type="time" name="end_time" value="07:00" step="3600"></td>
                             </tr>
                             <tr style="margin-top: 30px;">
                                 <td><label for="name">Họ và tên (*)</label></td>
+                                <?php
+                                    
+                                ?>
                                 <td><input type="text" name="name" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="code">Mã giảm giá</label></td>
+                                <td><input type="text" name="code"></td>
                             </tr>
                             <tr>
                                 <td><label for="phone">Số điện thoại (*)</label></td>
@@ -384,18 +427,15 @@
                             </tr>
                         </table>
                         <div>
-                            <input type="submit" value="Đặt sân">
+                            <input type="submit" name='submit' value="Đặt sân">
                             <button type="button" class="close-btn" onclick="closePopup()">Đóng</button>
                         </div>
                     </form>
-
-
                 </div>
             </div>
         </div>
     </div>
     <script>
-<<<<<<< HEAD
         let images = <?php echo json_encode($avt_pitches); ?>;
         let currentIndex = 0;
         let thumbnailContainer = document.getElementById('thumbnails');
@@ -448,19 +488,6 @@
         function closePopup() {
             document.getElementById('popup-overlay').style.display = 'none';
         }
-=======
-    function changeImage(imageSrc) {
-        document.getElementById('field-image').src = imageSrc;
-    }
-
-    function openPopup() {
-        document.getElementById('popup-overlay').style.display = 'block';
-    }
-
-    function closePopup() {
-        document.getElementById('popup-overlay').style.display = 'none';
-    }
->>>>>>> 9a12902fc5bf40b04c3f6b7269b59ce429f226a3
     </script>
 </body>
 
