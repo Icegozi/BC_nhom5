@@ -14,3 +14,4 @@ $query = "SELECT COUNT(*) as count FROM ORDERS WHERE pitch_id = ? AND date = ? A
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     return $row['count'] == 0;
     }
+?>
