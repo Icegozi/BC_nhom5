@@ -7,8 +7,8 @@
         return $pitch;
     }
 
-    function checkTimeOrder($conn, $pitch_id, $date, $start_time, $end_time) {
-    $query = "SELECT COUNT(*) as count FROM ORDERS WHERE pitch_id = ? AND date = ? AND (start_time < ? AND end_time > ?)";
+function checkTimeOrder($conn, $pitch_id, $date, $start_time, $end_time) {
+$query = "SELECT COUNT(*) as count FROM ORDERS WHERE pitch_id = ? AND date = ? AND (start_time < ? AND end_time> ?)";
     $stmt = $conn->prepare($query);
     $stmt->execute([$pitch_id, $date, $end_time, $start_time]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
