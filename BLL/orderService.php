@@ -1,8 +1,11 @@
 <?php
-    require_once './DAL/connect_database.php';
-    require_once './DAL/orderData.php';
-    require_once './BLL/utils.php';
-
+    require_once '../DAL/orderData.php';
+    require_once '../BLL/utils.php';
+    
+    function getTimeOrder($id_user, $id_pitch) {
+        $r = getTimeOrderById($id_user, $id_pitch);
+        return $r['order_count'];
+    }
 
     function createNewOrder($pitch_id, $date, $start_time, $end_time, $name, $phone, $email) {
         # format datetime

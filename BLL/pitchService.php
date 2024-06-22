@@ -1,15 +1,10 @@
 <?php
-    require_once './DAL/connect_database.php';
-    require_once './DAL/piches.php';
+    require_once '../DAL/pichesData.php';
+    require_once '../DAL/pitchDetailsData.php';
 
-    function get_footballPichesDetails($id) {
-        $conn = getConnection();
-        if ($conn) {
-            $pitch = getPitchById($conn, $id);
-            $conn->close();
-            return $pitch;
-        }
-        return null;
+    function getPitch($id) {
+        $pitch = getPitchById($id);
+        return $pitch;
     }
 
     function checkTimeOrder($conn, $pitch_id, $date, $start_time, $end_time) {
