@@ -29,4 +29,9 @@ class PitchSearchService {
 
         return $empty;
     }
+
+    public function getPitchById($pitchId) {
+        $pitch = $this->pitch_searchDAL->getPitchById($pitchId);
+        return null;
+    }
 }

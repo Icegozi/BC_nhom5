@@ -1,17 +1,11 @@
 <?php
-include 'header.php';
+include 'header_admin.php';
 if(isset($_GET['pg'])){
     $pg = $_GET['pg'];
 
     switch($pg){
-        case 'order':
-            include 'order.php';
-            break;
         case 'userEdit':
             include 'userEdit.php';
-            break;
-        case 'pitchSearch':
-            include 'pitchSearch.php';
             break;
         case 'pitchManage':
             include 'pitchManage.php';

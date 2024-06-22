@@ -348,7 +348,7 @@ ALTER TABLE `bank_information`
 -- AUTO_INCREMENT cho bảng `football_pitches`
 --
 ALTER TABLE `football_pitches`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `football_pitch_details`

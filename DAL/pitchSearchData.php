@@ -29,4 +29,16 @@ class PitchSearchDAL {
         $conn->close();
         return $order;
     }
+
+    public function getPitchById($id){
+        $conn = getConnection();
+        $data = $conn->query("SELECT * FROM football_pitches WHERE id = $id");
+        if ($data->num_rows > 0) {
+            while ($row = $data->fetch_assoc()) {
+                $order[] = new order_model($row['id'], $row['name'], $row['phone'], $row['email'], $row['deposit'], $row['code'], $row['start_at'], $row['end_at'], $row['total'], $row['status'],$row['note'], $row['user_id'], $row['football_pitch_id'], $row['created_at'], $row['updated_at']);
+            }       
+        }
+        $conn->close();
+        return $order;
+    }
 }
