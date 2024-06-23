@@ -15,8 +15,8 @@ if(isset($_GET['pg'])){
     $pg = $_GET['pg'];
 
     switch($pg){
-        case 'order':
-            include 'order.php';
+        case 'orderHistoy':
+            include 'orderHistoy.php';
             break;
         case 'userEdit':
             include 'userEdit.php';
@@ -25,7 +25,6 @@ if(isset($_GET['pg'])){
             include 'pitchSearch.php';
             break;
         case 'logout': 
-            session_start();
             session_destroy();
             header("Location: login.php");
             exit();

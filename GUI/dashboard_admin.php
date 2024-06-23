@@ -29,11 +29,11 @@ if(isset($_GET['pg'])){
             header("Location: login.php");
             exit();
         default:
-            include 'home.php';
+            include 'accountManage.php';
             break;
         }
     }else{
-        include 'home.php';
+        include 'accountManage.php';
     }  
 
 include 'footer.php';
