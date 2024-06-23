@@ -34,8 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $hashedPassword = $user['password'];
     }
-
-
     
     if (!preg_match('/^[0-9]{10}$/', $phone)) {
         echo '<script>alert("Phone number must be 10 digits."); location.replace("editAdmin.php?action=edit&id=' . $userId . '");</script>';
