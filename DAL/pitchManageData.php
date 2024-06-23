@@ -60,4 +60,3 @@ function DelId($id){
     }
     $conn->close();
 }
-?>
