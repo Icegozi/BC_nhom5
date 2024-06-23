@@ -1,15 +1,17 @@
 <?php
 function getConnection() {
-    $host = "localhost:5306";
-    $db_name = "quan_ly_san_bong";
-    $username = "root";
-    $password = "";
+    $servername = "localhost"; // Thay bằng thông tin của bạn
+    $username = "root"; // Thay bằng thông tin của bạn
+    $password = ""; // Thay bằng thông tin của bạn
+    $dbname = "quan_ly_san_bong"; // Thay bằng tên database của bạn
 
-    try {
-        $conn = new mysqli($host, $username, $password, $db_name);
-        return $conn;
-    } catch(PDOException $exception) {
-        echo "Connection error: " . $exception->getMessage();
-        return null;
+    // Tạo kết nối
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Kiểm tra kết nối
+    if ($conn->connect_error) {
+        die("Kết nối thất bại: " . $conn->connect_error);
     }
+
+    return $conn;
 }
