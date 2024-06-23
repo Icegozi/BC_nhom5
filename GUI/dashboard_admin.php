@@ -40,4 +40,3 @@ if(isset($_GET['pg'])){
 }  
 
 include 'footer.php';
-?>

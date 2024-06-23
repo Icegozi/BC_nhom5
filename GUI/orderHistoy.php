@@ -1,5 +1,6 @@
 <?php
 require_once '../DAL/orderData.php'; 
+include 'header_admin.php';
 ?>
 
 <!DOCTYPE html>
@@ -205,3 +206,7 @@ require_once '../DAL/orderData.php';
 </body>
 
 </html>
+
+<?php
+include 'footer.php';
+?>

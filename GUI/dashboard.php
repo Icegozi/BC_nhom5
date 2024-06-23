@@ -15,15 +15,12 @@ if(isset($_GET['pg'])){
     $pg = $_GET['pg'];
 
     switch($pg){
-        case 'orderHistoy':
-            include 'orderHistoy.php';
-            break;
         case 'userEdit':
             include 'userEdit.php';
             break;
-        case 'pitchSearch':
-            include 'pitchSearch.php';
-            break;
+        // case 'pitchSearch':
+        //     include 'pitchSearch.php';
+        //     break;
         case 'logout': 
             session_destroy();
             header("Location: login.php");
