@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'header_admin.php';
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -23,17 +24,20 @@ if(isset($_GET['pg'])){
         case 'accountManage':
             include 'accountManage.php';
             break;
+        case 'summary': 
+            include 'orderHistory.php'; 
+            break;
         case 'logout': 
-            session_start();
             session_destroy();
             header("Location: login.php");
             exit();
         default:
             include 'accountManage.php';
             break;
-        }
-    }else{
-        include 'accountManage.php';
-    }  
+    }
+}else{
+    include 'accountManage.php';
+}  
 
 include 'footer.php';
+?>

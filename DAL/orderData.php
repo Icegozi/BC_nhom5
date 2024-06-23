@@ -117,3 +117,32 @@
         $conn->close();
         return $r;
     }
+
+//=====================================
+function getUnpaidOrders() {
+    $conn = getConnection();
+    $sql = "SELECT id, name, start_at, end_at, deposit, total, code, status, phone, email FROM orders WHERE status = 'unpaid'";
+    $result = $conn->query($sql);
+    $orders = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $orders[] = $row;
+        }
+    }
+    $conn->close();
+    return $orders;
+}
+
+function getAllOrders() {
+    $conn = getConnection();
+    $sql = "SELECT id, name, start_at, end_at, deposit, total, code, status, phone, email FROM orders";
+    $result = $conn->query($sql);
+    $orders = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $orders[] = $row;
+        }
+    }
+    $conn->close();
+    return $orders;
+}
