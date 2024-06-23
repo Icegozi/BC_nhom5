@@ -158,7 +158,7 @@ ob_start();
            $updated_at= null;
             checkAddingPitch($_POST['pitchName'], $_POST['pitchTimeStart'], $_POST['pitchTimeEnd'], $_POST['Description'], $_POST['price_per_hour'], 
             $_POST['price_per_peak_hour'], $_POST['is_maintenance'], $_POST['pitch_type_id'], $created_at, $updated_at);
-            header("Location: dashboard_admin.php");
+            header("Location: dashboard_admin.php?pg=pitchManage");
               exit();
         }
         
@@ -167,13 +167,13 @@ ob_start();
             $updated_at= date('Y-m-d H:i:s'); 
             checkUpdatePitch($_POST['pitchId2'] ,$_POST['pitchName2'], $_POST['pitchTimeStart2'], $_POST['pitchTimeEnd2'], $_POST['Description2'], $_POST['price_per_hour2'], 
             $_POST['price_per_peak_hour2'], $_POST['is_maintenance2'], $_POST['pitch_type_id2'], $updated_at);
-            header("Location: dashboard_admin.php");
+            header("Location: dashboard_admin.php?pg=pitchManage");
               exit();
         }
         if(isset($_POST['Xoa'])){
                 $delid = $_POST['hidenId'];
                 checkDelete($delid);
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: dashboard_admin.php?pg=pitchManage");
                 exit();
         }
        }
