@@ -44,4 +44,10 @@ class UserService {
         return $this->userRepository->isEmailExist($email);
     }
     
+    public function updatePassword($email, $newPassword) {
+        $userRepository = new UserRepository();
+        $hashedPassword = md5($newPassword); // hoặc sử dụng một phương pháp băm mật khẩu mạnh hơn
+        return $userRepository->updatePassword($email, $hashedPassword);
+    }
+    
 }

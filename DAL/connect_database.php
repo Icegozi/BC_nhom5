@@ -1,6 +1,6 @@
 <?php
 function getConnection() {
-    $host = "localhost";
+    $host = "localhost:5306";
     $db_name = "quan_ly_san_bong";
     $username = "root";
     $password = "";

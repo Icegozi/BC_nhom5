@@ -101,4 +101,12 @@ public function findNameTypebyId($id){
         $stmt->close();
         return $row['count'] > 0;
     }
+    public function updatePassword($email, $password) {
+        $sql = "UPDATE users SET password=? WHERE email=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ss", $password, $email); // "ss" tương ứng với string và string
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
 }
