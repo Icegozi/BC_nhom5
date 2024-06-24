@@ -25,7 +25,7 @@
         $endMinutes = timeToMinutes($end_at);
 
         if ($endMinutes <= $startMinutes) {
-            echo "<script type='text/javascript'>alert('Thời gian kết thúc phải sau thời gian bắt đầu.');window.location.replace('pitchDetail.php');</script>";
+            echo "<script type='text/javascript'>alert('Thời gian kết thúc phải sau thời gian bắt đầu.');window.location.replace('dashboard.php?pg=home');</script>";
 
             exit();
         }

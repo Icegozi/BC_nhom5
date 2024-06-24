@@ -36,7 +36,7 @@
 
         // Nếu mã giảm giá không hợp lệ, thông báo lỗi và thoát
         if (!$codeValid) {
-            echo "<script type='text/javascript'>alert('Mã giảm giá không hợp lệ');window.location.replace('pitchDetail.php');</script>";
+            echo "<script type='text/javascript'>alert('Mã giảm giá không hợp lệ');window.location.replace('dashboard.php?pg=home');</script>";
             return false;
         }
     }
