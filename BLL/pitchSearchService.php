@@ -50,7 +50,6 @@ class PitchSearchService {
         return null;
     }
 
-    // Trong pitchService.php hoặc một tập tin tương tự
 public function getBookedPitches() {
     $bookedPitches = [];
 
@@ -75,4 +74,7 @@ public function getBookedPitches() {
     return $bookedPitches;
 }
 
+public function getPitchByName($name){
+    return $this->pitch_searchDAL->getPitchByName($name);
+}
 }
