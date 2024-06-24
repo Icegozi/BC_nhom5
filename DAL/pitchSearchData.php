@@ -41,4 +41,17 @@ class PitchSearchDAL {
         $conn->close();
         return $order;
     }
+
+    public function getPitchByName($name){
+        $pitch = [];
+        $conn = getConnection();
+        $data = $conn->query("SELECT * FROM football_pitches WHERE name LIKE'%".$name."%'");
+        if ($data->num_rows > 0) {
+            while ($row = $data->fetch_assoc()) {
+                $pitch[] = new football_pitches($row['id'], $row['name'], $row['time_start'], $row['time_end'], $row['description'], $row['price_per_hour'], $row['price_per_peak_hour'], $row['is_maintenance'], $row['pitch_type_id'], $row['created_at'], $row['updated_at']);
+            }
+        }
+        $conn->close();
+        return $pitch;
+    }
 }

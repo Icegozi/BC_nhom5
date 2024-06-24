@@ -18,9 +18,9 @@ if(isset($_GET['pg'])){
         case 'userEdit':
             include 'userEdit.php';
             break;
-        // case 'pitchSearch':
-        //     include 'pitchSearch.php';
-        //     break;
+        case 'pitchSearch':
+            include 'pitchSearch.php';
+            break;
         case 'logout': 
             session_destroy();
             header("Location: login.php");
