@@ -1,244 +1,250 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 600px;
-}
-
-.left-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    padding-right: 20px;
-    padding-left: 10%;
-
-}
-
-.right-panel {
-    width: 50%;
-    /* Chiếm 50% chiều rộng của container */
-    padding-right: 10%;
-    /* Khoảng cách phía bên trái */
-}
-
-.field-info {
-    margin-bottom: 20px;
-}
-
-.field-info label {
-    font-weight: bold;
-}
-
-.field-info span {
-    margin-left: 10px;
-}
-
-.button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.image-button {
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    margin: 10px;
-}
-
-.description {
-    margin-top: 20px;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-}
-
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    background: #f0f0f0;
-    padding: 20px;
-    width: 700px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.field-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}
-
-.field-image img {
-    width: auto;
-    max-width: 100%;
-    max-height: 400px;
-    border-radius: 20px;
-    object-fit: cover;
-}
-
-.field-image {
-    position: relative;
-    width: 100%;
-    height: 400px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     overflow: hidden;
 }
 
-.field-image img {
-    width: 100%;
-    height: auto;
-    transition: opacity 1s ease-in-out;
-    opacity: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+.image-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.field-image img.hidden {
+.main-image img {
+    width: 100%;
+    max-width: 600px;
+    /* Fixed width for main image */
+    height: 400px;
+    /* Fixed height for main image */
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 1s;
+}
+
+.main-image img.hidden {
     opacity: 0;
 }
 
 .thumbnails-container {
     display: flex;
-    justify-content: center;
-    ;
-    margin-top: 20px;
-    width: 100%;
-    /* Đặt chiều rộng tối đa của phần chứa hình ảnh thu nhỏ */
-    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .thumbnails {
     display: flex;
-    gap: 15px;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    /* Căn trái các hình thu nhỏ */
-    transition: transform 0.1s ease-in-out;
-    /* Hiệu ứng chuyển đổi mượt mà khi cuộn */
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    /* Aligning with the main image width */
 }
 
 .thumbnails img {
-    width: 150px;
+    width: 100px;
     height: 100px;
+    /* Fixed size for thumbnails */
+    margin: 5px;
     cursor: pointer;
-    transition: transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    object-fit: cover;
 }
 
 .thumbnails img:hover {
-    transform: scale(1.1);
+    border-color: #19458a;
 }
 
 .scroll-buttons {
     display: none;
-    /* Mặc định ẩn các nút cuộn */
     justify-content: space-between;
-    width: 800px;
-    /* Phải khớp với chiều rộng của phần chứa hình ảnh thu nhỏ */
+    width: 100%;
     margin-top: 10px;
 }
 
 .scroll-buttons button {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
+    background-color: #19458a;
+    color: #fff;
+    border: none;
+    padding: 10px;
     cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
-.scroll-buttons button:hover {
-    background-color: #eee;
+/* Details Panel */
+.details-panel {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin: 10px 0 5px;
+.pitch-name {
+    color: #19458a;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 30px;
     font-weight: bold;
 }
 
-input {
+.status {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.pitch-details {
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.detail-item .label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.detail-item .value {
+    color: #333;
+    font-size: 16px;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.button.primary {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.button.secondary {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    /* đảm bảo nó nằm trên cùng */
+}
+
+/* Popup Form */
+.popup {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup h1 {
+    color: #19458a;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.popup table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.popup table td {
+    padding: 10px 0;
+}
+
+.popup table label {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.popup table input {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 10px;
-    width: calc(100% - 22px);
-    /* Để input nằm thẳng với viền phải của button */
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
-tr {
-    width: 80%;
-    padding-right: 20px;
-    padding-left: 20px;
+.popup-actions {
+    text-align: center;
+    margin-top: 20px;
 }
 
-td:first-child {
-    width: 30%;
-}
-
-button,
-input[type="submit"] {
+.popup .button {
+    width: auto;
     padding: 10px 20px;
+    margin: 5px;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    color: black;
+}
+
+.popup .button.primary {
     background-color: #4CAF50;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 1;
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.2 ease-out;
-    width: 100%;
-    /* Để button có cùng chiều rộng với input */
+    color: #fff;
+    transition: background-color 0.3s ease;
 }
 
-button:active,
-input[type="submit"]:active {
-    transform: scale(1.1);
-    /* Phóng to lên 110% khi nhấn */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Đổ bóng nhẹ */
-    opacity: 1;
+.popup .button.primary:hover {
+    background-color: #4CAF50;
 }
 
-button:hover,
-input[type="submit"]:hover {
-    transform: scale(1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    opacity: 0.9;
+.popup .button.secondary {
+    background-color: #ccc;
+    color: #333;
+    transition: background-color 0.3s ease;
 }
 
-.close-btn {
-    width: 120px;
-    margin-right: 10px;
+.popup .button.secondary:hover {
+    background-color: #b3b3b3;
 }

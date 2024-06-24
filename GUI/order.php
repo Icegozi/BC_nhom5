@@ -8,48 +8,7 @@ include 'header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán</title>
-    <style>
-    .container {
-        width: 80%;
-        margin: 0 auto;
-        border: 1px solid #ccc;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .header {
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        background-color: #D3DCE3;
-    }
-
-    .section {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-
-    .info-box {
-        width: 48%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    .info-box h3 {
-        margin-top: 0;
-    }
-
-    .footer {
-        background-color: #f1f1f1;
-        padding: 10px;
-        border-radius: 5px;
-        text-align: center;
-        background-color: #76A2D8;
-    }
-    </style>
+    <link rel="stylesheet" href="css/order.css?v = <?php echo time() ?>">
 </head>
 
 <body>
@@ -60,10 +19,7 @@ include 'header.php';
 
         <?php
         require_once '../BLL/orderService.php';
-       
-       if (session_status() === PHP_SESSION_NONE) {
-            session_start(); // Bắt đầu session nếu chưa tồn tại
-        }
+        session_start(); 
         if (isset($_SESSION['order_id'])) {
             $order_id = $_SESSION['order_id'];
         }
@@ -112,8 +68,8 @@ include 'header.php';
         </div>
 
         <div class="footer">
-            <p>Nếu sau khi chuyển khoản thành công quá 5 phút mà vẫn chưa được thông báo đặt sân thành công. Vui lòng
-                liên hệ số điện thoại bên dưới.</p>
+            <p>Nếu sau khi chuyển khoản thành công quá 5 phút mà vẫn chưa được thông báo đặt
+                sân thành công. Vui lòng liên hệ số điện thoại bên dưới.</p>
             <p style="color:#FD0101">01887090085</p>
         </div>
     </div>
