@@ -1,0 +1,92 @@
+ body {
+     margin: 0px;
+     padding: 0px;
+     font-family: Arial, sans-serif;
+     /* background-image: url("../img/pitch3.jpg");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat; */
+ }
+
+ .container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 80vh;
+ }
+
+ .col-md-6 {
+     width: 450px;
+     height: 500px;
+     margin: 0 auto;
+     padding: 20px;
+     background-color: #fff;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     border-radius: 8px;
+ }
+
+ h2 {
+     display: flex;
+     justify-content: center;
+     justify-self: center;
+     background-color: #4CAF50;
+     color: white;
+     padding: 10px 0px;
+     margin: 0px;
+ }
+
+ .form-group {
+     margin-bottom: 20px;
+ }
+
+ .form-group input {
+     width: 93%;
+ }
+
+ .form-control {
+     padding: 5px 20px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 20px;
+ }
+
+ .form-control[readonly] {
+     background-color: #e9ecef;
+     opacity: 1;
+ }
+
+ .btn {
+     background-color: #007bff;
+     color: white;
+     padding: 12px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     width: 102%;
+ }
+
+ .title {
+     margin-left: 28%;
+ }
+
+ #content {
+     width: 100%;
+     height: 31%;
+     background-color: none;
+     border: none;
+     text-align: center;
+     color: black;
+     font-family: "Shadows Into Light", cursive;
+     font-weight: 500;
+     font-style: normal;
+     font-size: 24px;
+ }
+
+ .col-md-6 label {
+     font-weight: bold;
+     font-size: larger;
+ }
+
+ .password-wrapper .form-control {
+     padding-right: 150px;
+ }

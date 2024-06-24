@@ -1,0 +1,116 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 600px;
+
+    /* Tăng chiều rộng của container */
+    background: #ffffff;
+    padding: 40px;
+    /* Tăng padding để thêm không gian bên trong container */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 30px;
+}
+
+.form-controler {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #666;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    /* Đặt chiều rộng của input chiếm toàn bộ chiều rộng của container */
+    padding: 15px;
+    /* Tăng padding để input lớn hơn */
+    font-size: 18px;
+    /* Tăng font-size để text lớn hơn */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Nếu muốn đặt chiều rộng cố định cho các input, có thể thay đổi width thành giá trị cụ thể, ví dụ: */
+/*
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 80%;  Đặt chiều rộng cố định cho các input
+    padding: 15px; 
+    font-size: 18px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+*/
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    /* Tăng padding để button lớn hơn */
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    /* Tăng font-size để text lớn hơn */
+    transition: background-color 0.3s ease;
+}
+
+.btn input[type="submit"] {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    /* Tăng font-size để text lớn hơn */
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.success {
+    color: green;
+    text-align: center;
+    margin-bottom: 20px;
+}
