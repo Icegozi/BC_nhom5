@@ -60,4 +60,25 @@ function DelId($id){
     }
     $conn->close();
 }
-?>
+function Getpic($id) {
+    $conn = getConnection();
+    $query = "SELECT * FROM football_pitch_details WHERE id = '$id' " ;
+    $result = $conn->query($query);
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            return $row['image'];
+    }
+}
+}
+function getIDfromData(){
+    $conn = getConnection();
+    $query = 'SELECT * from football_pitches';
+    $ans = [];
+    $result = $conn->query($query);
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $ans['id'] = $row['id'];
+        }
+    }
+    return $ans;
+}

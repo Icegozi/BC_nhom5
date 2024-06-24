@@ -15,9 +15,10 @@
         </div>
         <div class="wrapper">
             <ul class="menu">
-                <li><a href="index_admin.php?pg=Home">Home</a></li>
-                <li><a href="index_admin.php?pg=userEdit">Edit Profile</a></li>
-                <li><a href="index_admin.php?pg=pitchManage">Pitch Manager</a></li>
+                <li><a href="dashboard_admin.php?pg=pitchManage">Soccer field management</a></li>
+                <li><a href="dashboard_admin.php?pg=accountManage">Account Management</a></li>
+                <li><a href="orderHistoy.php?pg=summary">Sumary</a></li>
+                <li><a href="dashboard_admin.php?pg=logout">Log out</a></li>
             </ul>
         </div>
     </div>

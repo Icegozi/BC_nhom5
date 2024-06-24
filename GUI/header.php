@@ -15,14 +15,10 @@
         </div>
         <div class="wrapper">
             <ul class="menu">
-                <li><a href="index.php?pg=home">Home</a></li>
-                <li><a href="index.php?pg=order">Order</a></li>
-                <li><a href="index.php?pg=pitchSearch">Empty Football Field</a></li>
-                <li><a href="index.php?pg=userEdit">Edit Profile</a></li>
-                <li><a href="index.php?pg=order">Order History</a></li>
-                <li><a href="index.php?pg=pitchManage">pitchManage</a></li>
-                <li><a href="index.php?pg=login">Login</a></li>
-                <li><a href="index.php?pg=signin">Signin</a></li>
+                <li><a href="dashboard.php?pg=home">Home</a></li>
+                <!-- <li><a href="dashboard.php?pg=pitchSearch">Empty Football Field</a></li> -->
+                <li><a href="dashboard.php?pg=userEdit">Edit Profile</a></li>
+                <li><a href="dashboard.php?pg=logout">Log Out</a></li>
             </ul>
         </div>
     </div>
