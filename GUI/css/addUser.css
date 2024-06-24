@@ -24,6 +24,9 @@ body {
 
 h2 {
     text-align: center;
+    background-color: #4CAF50;
+    padding: 10px 0px;
+    margin: 0px;
 }
 
 .form-group {
