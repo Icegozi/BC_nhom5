@@ -18,6 +18,7 @@ include 'header_admin.php';
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         margin-bottom: 20px;
+        width: 100%;
     }
 
     .nav-tabs {
@@ -39,6 +40,11 @@ include 'header_admin.php';
     .tab-pane {
         padding-top: 20px;
     }
+
+    #table_order tr th {
+        background-color: #4CAF50;
+        color: white;
+    }
     </style>
 </head>
 
@@ -47,20 +53,21 @@ include 'header_admin.php';
     <section class="section">
         <div class="card">
             <div class="card-body pt-3">
-                <h5 class="card-title">Yêu cầu bảng</h5>
+                <h5 class="card-title">Order management</h5>
 
                 <ul class="nav nav-tabs nav-tabs-bordered mb-2" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                            aria-controls="all" aria-selected="true" role="tab">Tất cả</button>
+                            aria-controls="all" aria-selected="true" role="tab">Alls</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="order-unpay-tab" data-bs-toggle="tab" data-bs-target="#order-unpay"
-                            aria-controls="order-unpay" aria-selected="false" role="tab">Các sân sắp hết</button>
+                            aria-controls="order-unpay" aria-selected="false" role="tab">Football pitches are almost
+                            fully booked</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="advantage-tab" data-bs-toggle="tab" data-bs-target="#advantage"
-                            aria-controls="advantage" aria-selected="false" role="tab">Tùy chỉnh</button>
+                            aria-controls="advantage" aria-selected="false" role="tab">Customize your settings</button>
                     </li>
                 </ul>
 
@@ -71,15 +78,15 @@ include 'header_admin.php';
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Số điện thoại</th>
+                                    <th>Customer name</th>
+                                    <th>Phone number</th>
                                     <th>Email</th>
-                                    <th>Bắt đầu lúc</th>
-                                    <th>Kết thúc lúc</th>
-                                    <th>Tiền cọc</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Mã code đặt sân</th>
-                                    <th>Tình trạng</th>
+                                    <th>Start time</th>
+                                    <th>End time</th>
+                                    <th>Deposit</th>
+                                    <th>Total amount</th>
+                                    <th>Promotional code</th>
+                                    <th>Status</th>
                                     <th></th>
                                     <th></th>
                                 </tr>

@@ -19,18 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($password)) {
         if ($password !== $confirmPassword) {
-            echo '<script type="text/javascript">alert("Passwords do not match."); location.replace("dashboard.php");</script>';
+            echo '<script type="text/javascript">alert("Passwords do not match."); location.replace("dashboard.php?pg=userEdit");</script>';
             exit();
         }
         $hashedPassword = md5($password);
     }
 
     if (strlen($password) < 8) {
-        echo '<script type="text/javascript">alert("Password must have at least 8 characters."); location.replace("dashboard.php");</script>';
+        echo '<script type="text/javascript">alert("Password must have at least 8 characters."); location.replace("dashboard.php?pg=userEdit");</script>';
         exit();
     }
     if (!preg_match('/^[0-9]{10}$/', $phone)) {
-        echo '<script type="text/javascript">alert("Phone number must be 10 digits."); location.replace("dashboard.php");</script>';
+        echo '<script type="text/javascript">alert("Phone number must be 10 digits."); location.replace("dashboard.php?pg=userEdit");</script>';
         exit();
     }
     
@@ -40,11 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($type == 1) {
             echo '<script type="text/javascript">alert("Profile updated successfully."); location.replace("dashboard_admin.php");</script>';
         } elseif ($type == 2) {
-            echo '<script type="text/javascript">alert("Profile updated successfully."); location.replace("dashboard.php");</script>';
+            echo '<script type="text/javascript">alert("Profile updated successfully."); location.replace("dashboard.php?pg=userEdit");</script>';
         } else {
             echo '<script type="text/javascript">alert("Unknown user type."); location.replace("dashboard.php");</script>';
         }
     } else {
-        echo '<script type="text/javascript">alert("Failed to update profile."); location.replace("dashboard.php");</script>';
+        echo '<script type="text/javascript">alert("Failed to update profile."); location.replace("dashboard.php?pg=userEdit");</script>';
     }
 }

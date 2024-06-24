@@ -12,28 +12,29 @@ ob_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sân bóng</title>
-    <link rel="stylesheet" href="./css/pitchManage.css">
+    <title>Soccer field management</title>
+    <link rel="stylesheet" href="./css/pitchManage.css?v = <?php echo time() ?>">
 </head>
 
 <body>
     <header class="header_pitchManage">
         <div class="header_content">
             <img class="logo" src="./img/logocauthu.png" alt="">
-            <h1>Quản Lý Sân Bóng</h1>
+            <h1>Soccer field management</h1>
         </div>
         <nav class="menu2">
             <ul>
                 <li>
                     <form method="post" action="">
-                        <button name="ButThem" class="butthem">Thêm sân bóng</button>
+                        <button name="ButThem" class="butthem">Add soccer field</button>
                     </form>
                 </li>
                 <li>
-                    <form method="post" action=""><button name="ButSua" class="butsua">Sửa sân bóng</button></form>
+                    <form method="post" action=""><button name="ButSua" class="butsua">Update soccer field</button>
+                    </form>
                 </li>
-                <li><a href="#">Thống kê và báo cáo</a></li>
-                <li><a href="#">Hỗ trợ khách hàng</a></li>
+                <li><a href="#">Statistics and reporting</a></li>
+                <li><a href="#">Customer support</a></li>
                 <li><input type="text" readonly value=" Admin Manage Page"></li>
                 <li><a href="#"><img id="Adminpic" src="./img/Admin.jpg" alt=""></a></li>
             </ul>
@@ -47,25 +48,25 @@ ob_start();
             <div class="modal-content">
                 <form id="pitchForm" action="pitchManage.php" method="post">
 
-                    <label for="pitchName">Tên Sân:</label>
+                    <label for="pitchName">Pitch name:</label>
                     <input type="text" name="pitchName" required><br><br>
-                    <label for="pitchTimeStart">Thời gian mở:</label>
+                    <label for="pitchTimeStart">Start time:</label>
                     <input type="time" name="pitchTimeStart" required><br><br>
-                    <label for="pitchTimeEnd">Thời gian đóng:</label>
+                    <label for="pitchTimeEnd">End time:</label>
                     <input type="time" name="pitchTimeEnd" required><br><br>
-                    <label for="Description">Mô tả:</label>
+                    <label for="Description">Describe:</label>
                     <input type="text" name="Description" required><br><br>
-                    <label for="price_per_hour">Giá 1 giờ:</label>
+                    <label for="price_per_hour">Price per hour:</label>
                     <input type="text" name="price_per_hour" required><br><br>
-                    <label for="price_per_peak_hour">Giá 1 giờ cao điểm:</label>
+                    <label for="price_per_peak_hour">Price per peak hour:</label>
                     <input type="text" name="price_per_peak_hour" required><br><br>
-                    <label for="is_maintenance">Số lần bảo trì:</label>
+                    <label for="is_maintenance">Maintenance:</label>
                     <input type="text" name="is_maintenance" required><br><br>
-                    <label for="pitch_type_id">Mã kiểu sân:</label>
+                    <label for="pitch_type_id">Pitch type id:</label>
                     <input type="text" name="pitch_type_id" required><br><br>
 
 
-                    <input name="ThemSanBong" type="submit" value="Thêm Sân Bóng">
+                    <input name="ThemSanBong" type="submit" value="Add a soccer field">
 
                 </form>
             </div>
@@ -78,26 +79,26 @@ ob_start();
         <div class="modal2">
             <div class="modal-content2">
                 <form id="pitchForm2" action="pitchManage.php" method="post">
-                    <label for="pitchId2">Mã Sân:</label>
+                    <label for="pitchId2">Pitch id:</label>
                     <input type="text" name="pitchId2" required><br><br>
-                    <label for="pitchName2">Tên Sân:</label>
+                    <label for="pitchName2">Pitch name:</label>
                     <input type="text" name="pitchName2" required><br><br>
-                    <label for="pitchTimeStart2">Thời gian mở:</label>
+                    <label for="pitchTimeStart2">Start time:</label>
                     <input type="time" name="pitchTimeStart2" required><br><br>
-                    <label for="pitchTimeEnd2">Thời gian đóng:</label>
+                    <label for="pitchTimeEnd2">End time:</label>
                     <input type="time" name="pitchTimeEnd2" required><br><br>
-                    <label for="Description2">Mô tả:</label>
+                    <label for="Description2">Describe:</label>
                     <input type="text" name="Description2" required><br><br>
-                    <label for="price_per_hour2">Giá 1 giờ:</label>
+                    <label for="price_per_hour2">Price per hour:</label>
                     <input type="text" name="price_per_hour2" required><br><br>
-                    <label for="price_per_peak_hour2">Giá 1 giờ cao điểm:</label>
+                    <label for="price_per_peak_hour2">Price per peak hour:</label>
                     <input type="text" name="price_per_peak_hour2" required><br><br>
-                    <label for="is_maintenance2">Số lần bảo trì:</label>
+                    <label for="is_maintenance2">Maintenance:</label>
                     <input type="text" name="is_maintenance2" required><br><br>
-                    <label for="pitch_type_id2">Mã kiểu sân:</label>
+                    <label for="pitch_type_id2">Pitch type id:</label>
                     <input type="text" name="pitch_type_id2" required><br><br>
 
-                    <input name="SuaSanBong" type="submit" value="Sửa Thông Tin Sân Bóng">
+                    <input name="SuaSanBong" type="submit" value="Updated soccer field">
                 </form>
             </div>
         </div>
@@ -112,19 +113,19 @@ ob_start();
         <table>
             <thead>
                 <tr>
-                    <th>Mã Sân</th>
-                    <th>Tên Sân</th>
-                    <th>Thời gian mở</th>
-                    <th>Thời gian đóng</th>
-                    <th>Mô tả</th>
-                    <th>Giá 1 giờ</th>
-                    <th>Giá 1 giờ cao điểm</th>
-                    <th>Số lần bảo trì</th>
-                    <th>Mã kiểu sân</th>
-                    <th>Được tạo vào</th>
-                    <th>Được cập nhật vào</th>
-                    <th>Hình ảnh sân</th>
-                    <th>Xóa sân</th>
+                    <th>#</th>
+                    <th>Pitch name</th>
+                    <th>Open time</th>
+                    <th>Closing time</th>
+                    <th>Describe</th>
+                    <th>Price per hour</th>
+                    <th>Price for 1 peak hour</th>
+                    <th>Maintenance</th>
+                    <th>Pitch type id</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th>Image</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
