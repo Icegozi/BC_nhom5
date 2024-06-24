@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../BLL/pitchSearchService.php';
 $service = new PitchSearchService();
 
-
+$value = isset( $_SESSION['something'])? $_SESSION['something']:"";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['pitchId'])){
         $pitchId = $_POST['pitchId'];
@@ -16,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if($_SERVER['REQUEST_METHOD']== 'POST'){
     if(isset($_POST['search'])){
         $name = trim($_POST['search-bar']);
+        $_SESSION['something'] = $name;
         $emptyPitches = $service-> getPitchByName($name);
+        $value = $name;
     }
 }
 ?>
@@ -34,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2 class="title">SOCCER FIELD SEARCH</h2>
     <div class="form-search">
         <form action="" method="post">
-            <input type="text" id="search-bar" name="search-bar" placeholder="Tìm kiếm sân bóng...">
+            <input type="text" id="search-bar" name="search-bar" placeholder="Tìm kiếm sân bóng..."
+                <?php echo 'value="' .$value . '"'; ?>>
             <button type="submit" id="search" name="search">Search</button>
         </form>
     </div>

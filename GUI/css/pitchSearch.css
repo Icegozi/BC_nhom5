@@ -133,3 +133,7 @@
  #search:hover {
      background-color: #0026ff;
  }
+
+ .title_name {
+     font-weight: 700;
+ }
