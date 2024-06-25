@@ -135,7 +135,7 @@ $type_note = $pitch_details['type_note'];
                         <input type="hidden" name="price_perpeak" value="<?php echo $price_perpeak; ?>">
                     </table>
                     <div class="popup-actions">
-                        <input type="submit" name='submit' value="Đặt sân" class="button primary">
+                        <input type="submit" name='submit' value="Book now" class="button primary">
                         <button type="button" class="button secondary" onclick="closePopup()">Close</button>
                     </div>
                 </form>
