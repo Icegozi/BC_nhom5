@@ -76,11 +76,11 @@ public function findNameTypebyId($id){
     return null;
 }
 
- public function addUser($name, $email, $password, $phone, $address, $type) {
+public function addUser($name, $email, $password, $phone, $address, $type) {
     try {
         $query = "INSERT INTO users (name, email, password, phone, address, type) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param($name, $email, $password, $phone, $address, $type);
+        $stmt->bind_param("ssssss", $name, $email, $password, $phone, $address, $type);
         $stmt->execute();
         $stmt->close();
         return true;
@@ -89,6 +89,7 @@ public function findNameTypebyId($id){
         return false; 
     }
 }
+
 
 
     public function isEmailExist($email) {
