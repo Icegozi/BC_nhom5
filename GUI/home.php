@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <h2 class="title">ALL PITCHS</h2>
+    <h2 class="title">ALL SOCCER FIELDS</h2>
     <div class="container">
         <?php if (!empty($emptyPitches)) : ?>
         <?php foreach ($emptyPitches as $pitch) : ?>
