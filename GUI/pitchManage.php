@@ -16,61 +16,6 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soccer field management</title>
     <link rel="stylesheet" href="./css/pitchManage.css?v = <?php echo time() ?>">
-    <style>
-    /* Modal container */
-    .modal3 {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
-    }
-
-    .modal3 {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .modal-content3 {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 50%;
-        /* Adjust width as necessary */
-        text-align: center;
-    }
-
-    .modal-content3 img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Show modal */
-    .modal3.show {
-        display: block;
-    }
-    </style>
 </head>
 
 <body>
