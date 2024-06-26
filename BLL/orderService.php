@@ -50,7 +50,7 @@
     $status = 1;
 
     // Kiểm tra thời gian đặt sân
-    if (checkTimeOrderById($pitch_id, $start_time, $end_time)) {
+    if (checkTimeOrderById($pitch_id, $start_time, $end_time) == 0) {
         $rr = createNewOrderData($pitch_id, $user_id, $name, $phone, $deposit, $code, $start_time, $end_time, $total, $status, $email, $note);
         return $rr;
     } else {

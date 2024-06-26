@@ -26,7 +26,7 @@
         die("Prepare failed: " . $conn->error);
     }
 
-    $stmt->bind_param('iss', $pitch_id, $start_time, $end_time);
+    $stmt->bind_param('iss', $pitch_id, $end_time, $start_time);
     if ($stmt->execute() === false) {
         die("Execute failed: " . $stmt->error);
     }
@@ -43,7 +43,7 @@
     // Debug output
     echo "checkTimeOrderById - pitch_id: $pitch_id, start_time: $start_time, end_time: $end_time, count: " . $row['count'] . "<br>";
 
-    return $row['count'] == 0;
+    return $row['count'];
 }
 
 

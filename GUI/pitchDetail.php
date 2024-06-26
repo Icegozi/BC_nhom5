@@ -3,11 +3,11 @@ session_start();
 include 'header.php';
 require_once __DIR__ . '/../BLL/pitchService.php';
 require_once __DIR__ . '/../BLL/orderService.php';
+require_once __DIR__ . '/../BLL/UserService.php';
 
 if (isset($_SESSION['selectedPitch'])) {
     $pitch = $_SESSION['selectedPitch'];
     $pitch_details = getPitch($pitch);
-    unset($_SESSION['selectedPitch']);
 } else {
     echo 'No pitch selected.';
     die("");
@@ -15,6 +15,8 @@ if (isset($_SESSION['selectedPitch'])) {
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
+    $userService = new UserService();
+    $detail_user = $userService->getUserById($user_id);
 } else {
     $user_id = 1;
 }
@@ -116,7 +118,7 @@ $type_note = $pitch_details['type_note'];
                         </tr>
                         <tr>
                             <td><label for="name">Full name (*)</label></td>
-                            <td><input type="text" name="name" required></td>
+                            <td><input type="text" name="name" value="<?php echo $detail_user['name'] ?>" required></td>
                         </tr>
                         <tr>
                             <td><label for="code">Discount code</label></td>
@@ -124,7 +126,7 @@ $type_note = $pitch_details['type_note'];
                         </tr>
                         <tr>
                             <td><label for="phone">Phone number (*)</label></td>
-                            <td><input type="tel" name="phone" required></td>
+                            <td><input type="tel" name="phone" <?php if (isset($detail_user['phone'])) { echo "value='" . $detail_user['phone'] . "' ";} ?> required></td>
                         </tr>
                         <tr>
                             <td><label for="email">Email</label></td>
@@ -133,6 +135,10 @@ $type_note = $pitch_details['type_note'];
                         <input type="hidden" name="pitch_details_id" value="<?php echo $pitch_details['id']; ?>">
                         <input type="hidden" name="price_perhour" value="<?php echo $price_perhour; ?>">
                         <input type="hidden" name="price_perpeak" value="<?php echo $price_perpeak; ?>">
+                        <input type="hidden" name="time_open" value="<?php echo $time_open ?>">
+                        <input type="hidden" name="time_close" value="<?php echo $time_close ?>">
+                        <input type="hidden" name="name_pitch" value="<?php echo $name ?>">
+                        <input type="hidden" name="volume" value="<?php echo $volume ?>">
                     </table>
                     <div class="popup-actions">
                         <input type="submit" name='submit' value="Book now" class="button primary">
@@ -145,6 +151,7 @@ $type_note = $pitch_details['type_note'];
     <script>
     let images = <?php echo json_encode($avt_pitches); ?>;
     let currentIndex = 0;
+    let status = <?php echo json_encode($status);?>;
     let thumbnailContainer = document.getElementById('thumbnails');
     let scrollButtons = document.getElementById('scroll-buttons');
 
@@ -185,7 +192,12 @@ $type_note = $pitch_details['type_note'];
     setInterval(autoChangeImage, 5000);
 
     function openPopup() {
-        document.getElementById('popup-overlay').style.display = 'flex';
+        if (status == "Đang hoạt động") {
+            document.getElementById('popup-overlay').style.display = 'block';
+        }
+        else {
+            alert('Sân đang bảo chì');
+        }
     }
 
     function closePopup() {
