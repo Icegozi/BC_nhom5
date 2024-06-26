@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pitch_details_id = trim($_POST['pitch_details_id']);
         $price_perhour = trim($_POST['price_perhour']);
         $price_perpeak = trim($_POST['price_perpeak']);
-        $time_open = new DateTime(formatDateTime($date, $_POST['time_open']));
-        $time_close = new DateTime(formatDateTime($date, $_POST['time_close']));
+        $time_open = new DateTime(formatDateTime($date, $_POST['time_open']), $timezone);
+        $time_close = new DateTime(formatDateTime($date, $_POST['time_close']), $timezone);
         
         $start = new DateTime(formatDateTime($date, $start_time), $timezone);
         $end = new DateTime(formatDateTime($date, $end_time), $timezone);
