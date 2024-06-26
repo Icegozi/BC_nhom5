@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $current_time->modify('+2 hours');
         
         if ($start <= $current_time) {
-            echo "<script type='text/javascript'>alert('Thời gian cần đặt trước ít nhất 2 tiếng" . $current_time->format('Y-m-d H:i:s') . $start->format('Y-m-d H:i:s') . "'); window.location.replace('pitchDetail.php');</script>";
+            echo "<script type='text/javascript'>alert('Thời gian cần đặt trước ít nhất 2 tiếng" ." ". $current_time->format('Y-m-d H:i:s') ." " . $start->format('Y-m-d H:i:s') . "'); window.location.replace('pitchDetail.php');</script>";
             exit();
         }
         if ($start < $time_open || $end > $time_close) {

@@ -126,11 +126,15 @@ $type_note = $pitch_details['type_note'];
                         </tr>
                         <tr>
                             <td><label for="phone">Phone number (*)</label></td>
-                            <td><input type="tel" name="phone" <?php if (isset($detail_user['phone'])) { echo "value='" . $detail_user['phone'] . "' ";} ?> required></td>
+                            <td><input type="tel" name="phone"
+                                    <?php if (isset($detail_user['phone'])) { echo "value='" . $detail_user['phone'] . "' ";} ?>
+                                    required></td>
                         </tr>
                         <tr>
                             <td><label for="email">Email</label></td>
-                            <td><input type="email" name="email"></td>
+                            <td><input type="email" name="email"
+                                    <?php if (isset($detail_user['email'])) { echo "value='" . $detail_user['email'] . "' ";} ?>>
+                            </td>
                         </tr>
                         <input type="hidden" name="pitch_details_id" value="<?php echo $pitch_details['id']; ?>">
                         <input type="hidden" name="price_perhour" value="<?php echo $price_perhour; ?>">
@@ -193,9 +197,8 @@ $type_note = $pitch_details['type_note'];
 
     function openPopup() {
         if (status == "Đang hoạt động") {
-            document.getElementById('popup-overlay').style.display = 'block';
-        }
-        else {
+            document.getElementById('popup-overlay').style.display = 'flex';
+        } else {
             alert('Sân đang bảo chì');
         }
     }
